@@ -259,3 +259,4 @@ if [ $SITE = "nue" ]; then
 
     timeout 1h ~/bin/syncgitrepos
 fi
+~/bin/hardlinkrepos
