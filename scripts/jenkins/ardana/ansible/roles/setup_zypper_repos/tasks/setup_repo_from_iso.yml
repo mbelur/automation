@@ -14,10 +14,12 @@
 # under the License.
 #
 ---
+- debug: msg="{{ media[cloud_release] }}"
 
 - name: Download media "{{ media[cloud_release].name }}"
   get_url:
-   url: "{{ media[cloud_release].url }}/{{ media[cloud_release].iso }}"
+   #url: "{{ media[cloud_release].url }}/{{ media[cloud_release].iso }}"
+   url: "http://10.84.144.252/install/SLE-12-SP4-Cloud9-GMC2/SUSE-OPENSTACK-CLOUD-9-x86_64-Build0104-Media1.iso"
    dest: "{{ media[cloud_release].dest }}"
    mode: 0440
   register: download_media
@@ -28,6 +30,7 @@
 - name: Add media as zypper repository
   zypper_repository:
     name: "{{ media[cloud_release].name }}"
-    repo: "iso:///?iso={{ media[cloud_release].iso }}&url=dir:{{ media[cloud_release].dest }}"
+    #repo: "iso:///?iso={{ media[cloud_release].iso }}&url=dir:{{ media[cloud_release].dest }}"
+    repo: "iso:///?iso=SUSE-OPENSTACK-CLOUD-9-x86_64-Build0104-Media1.iso&url=dir:/root"
     auto_import_keys: yes
     runrefresh: yes

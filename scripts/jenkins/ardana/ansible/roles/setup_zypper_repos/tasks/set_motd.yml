@@ -23,7 +23,8 @@
 
 - name: Get media build version for milestone
   uri:
-    url: "{{ media[cloud_release].url }}"
+    #url: "{{ media[cloud_release].url }}"
+    url: "http://10.84.144.252/install/SLE-12-SP4-Cloud9-GMC2/"
     return_content: yes
   register: media_url
   when: is_milestone
