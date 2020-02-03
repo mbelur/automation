@@ -74,6 +74,6 @@
     - var: pending_system_reboot
       value: "{{ 'system reboot' in _ardana_update_status.stdout }}"
 
-- name: Update Ardana/OpenStack services if needed
-  include_tasks: update_services_{{ update_services_serial | ternary('serial', 'parallel') }}.yml
-  when: pending_service_update
+#- name: Update Ardana/OpenStack services if needed
+#  include_tasks: update_services_{{ update_services_serial | ternary('serial', 'parallel') }}.yml
+#  when: pending_service_update
