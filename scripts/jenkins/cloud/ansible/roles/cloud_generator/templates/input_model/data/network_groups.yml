@@ -81,7 +81,8 @@
 {%       if not 'octavia' in disabled_services %}
 {%         set _ = ns.routes.append('OCTAVIA-MGMT-NET') %}
 {%       endif %}
-{%       set _ = ns.routes.append('ILO') %}
+{%       set _ = ns.routes.append('ILO')%}
+{%       set _ = ns.routes.append('STORAGE')%}
 {%     else %}
 {%       for neutron_ng in scenario.network_groups if 'NEUTRON-VLAN' in neutron_ng.component_endpoints and
                                                       not 'neutron' in disabled_services %}
@@ -97,7 +98,9 @@
 {%     endfor  %}
 {%   endif %}
 
+
 {% if network_group.name != 'ILO' %}
+{% if network_group.name != 'STORAGE' %}
       load-balancers:
 {%   if 'INTERNAL-API' in network_group['component_endpoints'] %}
 
@@ -235,5 +238,6 @@
 {%   else %}
       tags: []
 {%   endif %}
+{% endif %}
 {% endif %}
 {% endfor %}

@@ -52,3 +52,9 @@ network_groups:
   - name: ILO
     hostname_suffix: ilo
     component_endpoints: []
+
+  - name: STORAGE
+    hostname_suffix: storage
+    tagged_vlan: true
+    component_endpoints: []
+
